@@ -26,7 +26,7 @@ const Footer = () => {
                         <h4>Sevices</h4>
                     </div>
                     <ul>
-                        <LinkContainer to='/current/city/weather'>
+                        <LinkContainer to='/live/weather'>
                            <li><a href="">Weather</a></li>
                         </LinkContainer>
                         <li><a href="">Map</a></li>

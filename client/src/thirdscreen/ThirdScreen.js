@@ -16,27 +16,28 @@ import LocationOn from '@material-ui/icons/LocationOn'
 
 const ThirdScreen = ({match}) => {
 
-///////////////////////////////////////////////////////////
-    const url = useParams()
-    console.log(url.name,url.title,url.titleId,url.id)
+    const Url = useParams()
     const [Detail, setDetail] = useState([])
-    let countryDetail = null
+
+
     useEffect(() => {
         const fechData = async() =>{
             try {
-             const {data} = await axios.get(`/${url.name}`) 
-             const a = Object.keys(data[url.titleId])
-             var vue = data[url.titleId]
-             countryDetail = vue[`${a[5]}`].find((d)=>d._id === match.params.id )
-             setDetail(countryDetail)
+                const {data} = await axios.get(`/${Url.name}`) 
+                const Allplace = data.places
+                const Place = Allplace.find((e)=>e._id === match.params.place_id)
+                const Findplace = Place.total_place
+                const ExactPlace = Findplace.find((e)=>e._id === match.params.loction_id)
+                setDetail(ExactPlace)
+                
             } catch (error) {
                 console.log(error)
             }
         }
         fechData()
      }, [])
-     console.log(Detail.name)
-//////////////////////////////////////////////
+    
+
 
 
 ////////////////<WEATHER>////////////////////
@@ -99,7 +100,7 @@ console.log(weather)
             </div>
              <div className="tt-details my-5">
                  <div className="text-center my-2" style={{fontSize:'30px', fontWeight:'bold'}}>
-                     {Detail.name}
+                     {Detail.title}
                  </div>
                  <hr/>
                  <div style={{fontSize:'20px', fontWeight:'bold'}}>

@@ -7,12 +7,13 @@
     background-color: #3eb7e7;
 }
 .carousel-title{
-    width: 33.33%;
+    width: 70%;
     height: 60px;
     background-color:#fff;
     position: relative;
     bottom: 40px;
-    left:33.33%;
+    left:15%;
+    right: 15%;
 }
 .carousel-text p{
     font-style: italic;
@@ -763,7 +764,7 @@
     height: 140px;
     width: 140px;
     top: 250px;
-    left: 70px;
+    left: -50px;
 }
 .circle-3{
     background: linear-gradient(to right, #ff512f, #dd2476);
@@ -789,7 +790,7 @@
     backdrop-filter: blur(10px);
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0.2);
     color: #fff;
-    max-width: 920px;
+    max-width: 1220px;
     height:100%;
     margin: auto;
     position: relative;
@@ -797,17 +798,9 @@
     user-select: none;
     
 }
-.country-title{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 60px;
-    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0.2);
-    font-weight: bold;
-    font-style:oblique;
-    text-transform:uppercase;
-}
 .country-details{
     font-family: "poppins",sans-serif;
-    font-size: 20px;
+    font-size: 17px;
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0.2);
     font-weight: bold;
     font-style:oblique;

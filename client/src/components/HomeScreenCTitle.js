@@ -1,6 +1,32 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import '../App.css'
+import axios from 'axios'
+import { useParams } from 'react-router'
 const HomeScreenCTitle = () => {
+
+    
+    const [Country, setCountry] = useState([])
+    const Url  = useParams()
+    let Urls = `/${Url.name}`
+    if (!Url.name) {
+        Urls=`/india`
+    }
+   
+
+useEffect(() => {
+    const CountryData = async() => {
+        try {
+            const {data} = await axios.get(Urls)
+            setCountry(data)
+            console.log(data)
+        } catch (error) {
+            console.log(error)
+        }
+       
+    }
+    CountryData()
+},[Url])
+
     return (
         <div className='hctbody p-4 '>
             <div className="home-screen-ctitle">
@@ -11,22 +37,24 @@ const HomeScreenCTitle = () => {
                 <div className="circle circle-5"></div>
                 <div className="circle circle-6"></div>
                 <div className="hct-model">
-                    <div className="country-title">Sadabrij</div>
+                    <div className="country-details">
+                       <span style={{fontSize:'40px'}}>{Country.name}</span>
+                    </div>
                     <hr/>
                     <div className="country-details">
-                       India's amazing diversity offers you everything you could ever want in a visit. From the moment you set foot in India, to be  greeted by a graceful namaste, a gesture that denotes both welcome and respect, you are on the way to one of the most rewarding experiences of your life.<br/>Bounded by the majestic Himalayan ranges in the north and edged by a spectacular coastline surrounded by three seas, India is a vivid kaleidoscope of landscapes, magnificent historical sites and royal cities, golden beaches, misty mountain retreats, colourful people, rich cultures and festivities. At any part of the year India can offer you a dazzling array of destinations and experiences. In summer, when the subcontinent is sizzling, there are spectacular retreats amidst the heady beauty of the Himalayas or the lush green heights of the Western Ghats with cool trekking trails, tall peaks to conquer stretches of white water for the adventure seekers.
+                        {Country.description}
                     </div>
                     <hr/>
                         <div className="hst-details">
-                                <sapn>Currency :</sapn><span style={{color:'#fff'}}> &nbsp;&nbsp; ₹ Rupees</span><br/>
-                                <sapn>Population :</sapn><span style={{color:'#fff'}}> &nbsp;&nbsp; 130 Crore</span><br/>
-                                <sapn>Time Zone :</sapn><span style={{color:'#fff'}}> &nbsp;&nbsp;TMC+5:30</span><br/>
-                                <sapn>Weather :</sapn><span style={{color:'#fff'}}> &nbsp;&nbsp; 25&#x2103;</span><br/>
-                                <sapn>Area :</sapn><span style={{color:'#fff'}}> &nbsp;&nbsp; 400x300 Meter</span><br/>
-                                <sapn>Capital :</sapn><span style={{color:'#fff'}}> &nbsp;&nbsp; Delhi</span><br/>
-                                <sapn>Official Language :</sapn><span style={{color:'#fff'}}> &nbsp;&nbsp; Language, Hindi</span><br/>
-                                <sapn>Capital's calling code :</sapn><span style={{color:'#fff'}}> &nbsp;&nbsp; +91</span><br/>
-                                <sapn>Location :</sapn><span style={{color:'#fff'}}> &nbsp;&nbsp; Bhoapl madhya pradesh , 486886</span>
+                                <span>Currency :</span><span style={{color:'#fff'}}> &nbsp;&nbsp; {Country.currency}</span><br/>
+                                <span>Population :</span><span style={{color:'#fff'}}> &nbsp;&nbsp; {Country.population}</span><br/>
+                                <span>Time Zone :</span><span style={{color:'#fff'}}> &nbsp;&nbsp;</span><br/>
+                                <span>Weather :</span><span style={{color:'#fff'}}> &nbsp;&nbsp; 25&#x2103;</span><br/>
+                                <span>Area :</span><span style={{color:'#fff'}}> &nbsp;&nbsp; {Country.area}</span><br/>
+                                <span>Capital :</span><span style={{color:'#fff'}}> &nbsp;&nbsp; {Country.capital}</span><br/>
+                                <span>Official Language :</span><span style={{color:'#fff'}}> &nbsp;&nbsp; {Country.language}</span><br/>
+                                <span>calling code :</span><span style={{color:'#fff'}}> &nbsp;&nbsp; {Country.dialing_code}</span><br/>
+                                <span>Location :</span><span style={{color:'#fff'}}> &nbsp;&nbsp; {Country.location}</span>
                         </div>
                     <hr/>
 

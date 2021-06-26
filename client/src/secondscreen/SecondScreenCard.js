@@ -10,16 +10,15 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import { Card } from 'react-bootstrap';
 
 const SecondScreenCard = ({secondscreen}) => {
-  const url = useParams()
+  const Url = useParams()
   return (
     <div>
-      <Card className="text-white s-screen-card my-4 text-center " style={{backgroundColor:'#a0ddf0'}}>
+       <Card className="text-white s-screen-card my-4 text-center " style={{backgroundColor:'#a0ddf0'}}>
           <Card.Img src={secondscreen.imagesrc} alt="Card image" />  
           <Card.ImgOverlay>
-              
-              <Card.Title style={{fontSize:'25px'}} className="ss-card-title">{secondscreen.name}</Card.Title>
-              <LinkContainer to={`/${url.name}/${url.title}/${url.titleId}/${secondscreen.name}/${secondscreen._id}`} >
-                <button className="ss-card-button">About More</button>
+              <Card.Title style={{fontSize:'25px'}} className="ss-card-title">{secondscreen.title}</Card.Title>
+              <LinkContainer to={`/${Url.name}/${Url.place_type}/${Url.place_id}/${secondscreen._id}`} >
+                   <button className="ss-card-button">About More</button>
               </LinkContainer>
           </Card.ImgOverlay>
       </Card>

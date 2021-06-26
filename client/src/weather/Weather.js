@@ -3,7 +3,6 @@ import React ,{useState,useEffect}from 'react'
 import '../App.css'
 import Clock from 'react-live-clock';
 import axios from 'axios'
-import { set } from 'lodash';
 const Weather = () => {
 
 
@@ -89,7 +88,7 @@ const Weather = () => {
                                     <span style={{color:'yellow'}}>{Math.floor(Weather.main.temp)} &#8451;</span>
                                     <span style={{fontFamily:`Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif`, fontSize:'15px'}}>&nbsp;feel-like</span>
                                     <span style={{fontSize:'40px'}}>{Math.floor(Weather.main.feels_like)} &nbsp;</span>
-                                    <img style={{width:'100px'}} src="/image/weather.png"/>
+                                    <img style={{width:'100px'}} src="https://image.flaticon.com/icons/png/128/869/869869.png " alt="img"/>
                                 </div>
                                 <div className="weather-detail-four">
                                     <sapn>{Weather.weather[0].description}</sapn>

@@ -12,27 +12,25 @@ const HomeScreenCardItem = () => {
 
 
     const [Country, setCountry] = useState([])
-    const url  = useParams()
-    let urls = `/${url.name}`
-    if (!url.name) {
-        urls=`/india`
+    const Url  = useParams()
+    let Urls = `/${Url.name}`
+    if (!Url.name) {
+        Urls=`/india`
     }
    
 
 useEffect(() => {
-    const countryData = async() => {
+    const CountryData = async() => {
         try {
-            const {data} = await axios.get(urls)
-            setCountry(data)
-            
+            const {data} = await axios.get(Urls)
+            setCountry(data.places)
         } catch (error) {
             console.log(error)
         }
        
     }
-    countryData()
-    
-})
+    CountryData()
+},[Url])
 
  
   

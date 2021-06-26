@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken')
 require('../DB/connection')
 const india = require('../data/india')
 const USA = require('../data/unitedState')
-const shingapor = require('../data/shingapor')
+const dubai = require('../data/dubai')
 
 
 router.get('/',(req, res)=>{
@@ -20,9 +20,10 @@ router.get('/india', (req, res)=>{
 router.get('/usa', (req, res)=>{
     res.json(USA)
 })
-router.get('/shingapor', (req, res)=>{
-    res.json(shingapor)
+router.get('/dubai', (req, res)=>{
+    res.json(dubai)
 })
+
 
 
 // resister route

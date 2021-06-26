@@ -16,31 +16,19 @@ import UserData from './authentication/UserData'
 
 const App = () => {
     return (
-        <div>
         <Router>
-            
-            <Header/>
-            <Route path={['/',"/:name"]} component={HeaderCarousel} exact/>
-            <Route path={['/', "/:name"]} component={HomeScreenNav} exact/>
-            <Route path={['/', "/:name"]} component={HomeScreenCTitle} exact/> 
-            <Route path={['/', "/:name"]} component={HomeScreenCardItem} exact/> 
-            <Route path={"/"} component={HomeScreenMap} exact/>
-            <Route path={['/', "/:name"]} component={Footer} exact/> 
-            <Route path="/:name/:title/:titleId" component={SecondScreenitem} exact/>
-            <Route path="/:name/:title/:titleId/:details/:id" component={ThirdScreen} exact/>
-            
-            <Route path="/user/userdata" component={UserData} exact/>
-            
-            
-           <Switch>
-               <Route path="/" component={Signup} exact />
-               <Route path="/user/signIn" component={Signin} exact />
-               <Route path="/current/city/weather" component={Weather} exact />
-           </Switch>
-
-          
+                <Header/>
+                <Route exact path={['/',"/:name"]} component={HeaderCarousel} />
+                <Route exact path={['/',"/:name"]} component={HomeScreenNav} />
+                <Route exact path={['/',"/:name"]} component={HomeScreenCTitle} />
+                <Route exact path={['/',"/:name"]} component={HomeScreenCardItem} />
+                <Route exact path={['/',"/:name"]} component={HomeScreenMap} />
+                <Route exact path={['/',"/:name"]} component={Footer} />
+                <Route exact path="/:name/:place_type/:place_id" component={SecondScreenitem}/>
+                <Route exact path="/:name/:place_type/:place_id/:loction_id" component={ThirdScreen}/>
+                <Route exact path="/live/weather" component={Weather}/>
+                
         </Router>
-        </div>
     )
 }
 

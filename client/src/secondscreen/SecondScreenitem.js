@@ -6,47 +6,57 @@ import { useParams } from 'react-router'
 import axios from 'axios'
 
 
-const SecondScreenitem = () => {
 
-    const url = useParams()
-    const urlTitle = url.title
+const SecondScreenitem = ({match}) => {
+
+    const Url = useParams()
     const [Subplace, setSubplace] = useState([])
 
     useEffect(() => {
-       const fechData = async() =>{
+       const FechData = async() =>{
            try {
-            const {data} = await axios.get(`/${url.name}`) 
-            const a = Object.keys(data[url.titleId])
-            var vue = data[url.titleId]
-            setSubplace(vue[`${a[5]}`])
+            const {data} = await axios.get(`/${Url.name}`) 
+            const Allplace = data.places
+            const Place = Allplace.find((e)=>e._id === match.params.place_id)
+            setSubplace(Place.total_place)
+           // countryDetail = vue[`${a[5]}`].find((d)=>d._id === match.params.id )
+
            } catch (error) {
                console.log(error)
            }
        }
-       fechData()
+       FechData()
     }, [])
    
     
    console.log(Subplace)
     return (
         <div>
-        <div className="ss-card">
-        <Container>
-           <Row className="p-3 w-100" >
-                {
-                Subplace.map((secondscreen)=>(
-                        <Col>
-                            <SecondScreenCard
-                                secondscreen={secondscreen}
-                            />
-                        </Col>
-                    ))
-                }
-            </Row>
-        </Container>
-        </div>
+            {!Subplace ? (
+                <h1>DATA NOT FOUND</h1>
+            ):(
+
+                <div className="ss-card">
+                      <Container>
+                          <Row className="p-3 w-100" >
+                              {
+                                 Subplace.map((e)=>(
+                                <Col>
+                                  <SecondScreenCard
+                                      secondscreen={e}
+                                   />
+                                 </Col>
+                                 ))
+                              }
+                         </Row>
+                     </Container>
+                </div>
+            )}
+    
         </div>
     )
 }
+
+
 
 export default SecondScreenitem
