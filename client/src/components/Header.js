@@ -17,10 +17,10 @@ const Header = () => {
                         <LinkContainer to="/notification">
                              <Nav.Link><NotificationImportant/></Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/user/signIn">
+                        <LinkContainer to="/user/login">
                             <Nav.Link>&nbsp;Log in</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/newUser/signUp">
+                        <LinkContainer to="/user/resister">
                             <Nav.Link>&nbsp;Resister</Nav.Link>
                         </LinkContainer>
                          

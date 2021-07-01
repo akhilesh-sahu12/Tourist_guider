@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {TextField} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import {Button, Container, Col, Row} from 'react-bootstrap'
+import {Button, Col, Row} from 'react-bootstrap'
+import { useHistory } from 'react-router';
 import '../App.css'
 import {Link} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
@@ -18,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  const history = useHistory()
 
   const [user, setUser] = useState({
     name:'', email:'', phone:'', password:'', cpassword:''
@@ -36,7 +38,7 @@ const handleSubmit = async(e) => {
   try {
     const { name, email, phone, password, cpassword} = user
     console.log(name, email, phone, password, cpassword)
-    const res = await fetch('./register',{
+    const res = await fetch('http://localhost:3000/register',{
       method:'POST',
       headers:{
         "Content-Type":"application/json"
@@ -48,9 +50,26 @@ const handleSubmit = async(e) => {
     const data = await res.json()
 
     if (res.status===422){
-      toast('Registration failed')
+      toast.error('registration failed', {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
     }else{
-      toast('Registration Sucessfull')
+      toast.success('registration successful', {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+      history.push('/user/login')
     }
 
   } catch (error) {
@@ -77,11 +96,11 @@ const handleSubmit = async(e) => {
                                 <TextField id="standard-password-input" label="Password" type="password"  autoComplete="off" name="password" value={user.password} onChange={handleInput} /><br/>
                                 <TextField id="standard-password-input" label="Confirm Password" type="password"  autoComplete="off"   name="cpassword" value={user.cpassword} onChange={handleInput} /><br/>
                                 <Button variant="success" type="submit" onClick={handleSubmit} >Register</Button>
-                                <ToastContainer />
                             </div>
                         </form>
+                           <ToastContainer />
                             <div className="text-center mt-2">
-                               <Link className="singup-content-link" to='/user/signIn'>already register | Login</Link>
+                               <Link className="singup-content-link" to='/user/login'>already register | Login</Link>
                             </div>    
                     </div>
                 </Col>

@@ -174,9 +174,12 @@ console.log(weather)
                             <div className="col text-center">
                                  <a href=""><HotelIcon/>&nbsp;Hotel</a>
                             </div>
-                            <div className="col text-center">
-                                <a href=""><CloudSharpIcon/>&nbsp; Weather</a>
-                            </div>
+                            <LinkContainer to='/live/weather'>
+                                <div className="col text-center">
+                                    <a href=""><CloudSharpIcon/>&nbsp; Weather</a>
+                                </div>
+                            </LinkContainer>
+                            
                             <div className="col text-center">
                                 <a href=""><FlightTakeoffSharpIcon/>&nbsp;Book trip</a>
                             </div>
